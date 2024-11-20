@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="dark light">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Clicker Simulator</title>
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+    {
+    "imports": {
+    "@material/web/": "https://esm.run/@material/web/"
+    }
+    }
+    </script>
+    <script type="module">
+import "@material/web/all.js";
+import { styles as typescaleStyles } from "@material/web/typography/md-typescale-styles.js";
+
+document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+  </head>
+  <body>
+    <div id="scrim" class="scrim">
+    </div>
+    <div id="box">
+      <h2>Welcome</h2>
+      <div class="content">
+        <p>
+          Hello and welcome to my game!
+        </p>
+
+        <p>
+          Click, Purchase Pets and Collect achivements
+        </p>
+      </div>
+      <md-text-button id="cl" onclick="closeElement('box'); closeElement('scrim');" class="one">close</md-text-button>
+    </div>
+    <div style="display: none;" id="achievements">
+      <h2>Achievements</h2>
+
+      <md-button class="Aclose" id="close" onclick="closeElement('achievements')">
+        <span class="material-icons">close</span>
+      </md-button>
+      <div id="achieved-list" class="achieved">
+        <p id="no-achievements">
+          No achievements unlocked yet.
+        </p>
+      </div>
+    </div>
+    <div id="box2" style="display: none">
+      <div class="content">
+        <p id="cont2"></p>
+        <p id="reward"></p>
+      </div>
+
+      <div class="custom-progress-bar">
+        <div class="custom-progress"></div>
+      </div>
+    </div>
+    <div class="header1">
+      <h1>
+        Clicker Simulator
+      </h1>
+      <p id="counter"></p>
+
+    </div>
+    <div class="fab-container">
+
+      <div class="fab-menu">
+        <button id="market" onclick="shopping()" class="fab top-left-fab">
+          <md-ripple></md-ripple>
+          <span class="material-icons">shopping_cart</span>
+        </button>
+        <button onclick="inventor();" class="fab top-fab">
+          <md-ripple></md-ripple>
+
+          <span class="material-icons">pets</span>
+        </button>
+        <button class="fab left-fab">
+          <md-ripple></md-ripple>
+
+          <a href="diamond/diamond.html" class="material-icons">public</a>
+        </button>
+      </div>
+      <button class="fab main-fab" onclick="toggleFabMenu()">
+        <md-ripple></md-ripple>
+        <span class="material-icons">add</span>
+      </button>
+
+    </div>
+
+    <div id="setting">
+      <h2>Settings</h2>
+      <button onclick="closeElement('setting')" class="close">
+        <span class="material-icons">close</span>
+      </button>
+      <div class="wrap">
+        <div class="settings">
+          <md-ripple></md-ripple>
+          <div class="wrap2">
+
+            <span class="material-icons">dark_mode</span>
+            <md-list-item>
+              <div slot="headline">
+                Dark Theme
+              </div>
+            </md-list-item>
+          </div>
+          <md-switch id="themeSwitch" selected></md-switch>
+        </div>
+      </div>
+    </div>
+    <div class="but">
+
+      <div id="mySidenav" class="sidenav">
+        <button href="javascript:void(0)" style="font-size: 22px;" class="close" onclick="closeNav()">&times;</button>
+        <div id="level">
+          <p>
+            Level
+            <span id="levelNo">1</span>
+          </p>
+          <p id="levelPercentage"></p>
+          <div id="levelProgress">
+          </div>
+        </div>
+
+        <md-divider></md-divider>
+        <div style="display: none;" class="a1" id="autoClick">
+          <p id="auto">
+            Auto Clicker not active
+          </p>
+          <md-switch onclick="autoClick()" id="clickSwitch"></md-switch>
+        </div>
+
+        <div style="display: none;" class="a1" id="superAutoClick">
+          <p id="auto2">
+            Super Auto Clicker not active
+          </p>
+          <md-switch onclick="superAutoClick()" id="clickSwitcher"></md-switch>
+        </div>
+        <md-divider></md-divider>
+        <div class="a1" id="ac">
+          <span class="material-icons">emoji_events</span>
+          Achievements
+        </div>
+        <div class="a1" onclick='toggleDiv("setting", "flex")'>
+
+          <span class="material-icons">settings</span>
+          Settings
+        </div>
+        <div class="a1" onclick='toggleDiv("about", "flex")'>
+
+          <span class="material-icons">person</span>
+          About
+        </div>
+
+        <div onclick="toggleDiv('reward2','inline')" class="a1">
+          <span class="material-icons">change_circle</span>
+          Rewards
+        </div>
+      </div>
+      <span style="position: relative">
+        <span onclick="openNav();" id="usage-anchor" class="material-icons b2">menu</span>
+      </span>
+
+
+
+      <md-filled-tonal-button class="main" onclick="po()"
+      >
+        <span style="display: flex; justify-content: center; align-items: center;" class="material-icons">science</span>
+      </md-filled-tonal-button>
+
+    </div>
+    <div id="inventory" style="display: none" class="equip">
+
+      <md-dialog id="sortDialog">
+        <div slot="content" id="sort-options">
+          <div class="s1">
+            <md-radio style="margin-right: 6px;" id="sortAscending" name="sort" value="asc" checked></md-radio>
+            <label for="sortAscending">Sort by Power (Ascending)</label>
+          </div>
+          <div class="s2">
+            <md-radio style="margin-right: 6px;" id="sortDescending" name="sort" value="desc"></md-radio>
+            <label for="sortDescending">Sort by Power (Descending)</label>
+          </div>
+        </div>
+      </md-dialog>
+
+      <div style="
+background: var(--md-sys-color-primary-container);
+color: var(--md-sys-color-on-primary-container);
+margin: 10px;
+cursor: pointer;
+padding: 10px;
+border-radius: 30px;
+width: fit-content;
+height: fit-content;
+display: flex;
+justify-content: center;
+align-items: center;
+        " id="sort" onclick="show()"><span class="material-icons">filter_list</span>
+      </div>
+      <p style="display: flex;" id="noPetsMessage">No pets purchased</p>
+      <div id="wrap" class="wrap-in">
+      </div>
+      <div class="bbut">
+        <md-outlined-button onclick="closeElement('inventory')"  id="close2">close</md-outlined-button>
+        <md-filled-tonal-button class="unequip" onclick="unequipAll()"
+        >Unequip all</md-filled-tonal-button
+        >
+      </div>
+    </div>
+    <div id="potions" style="display: none">
+      <h2>Potions</h2>
+      <button  onclick="closeElement('potions')" id="close3">
+        <span class="material-icons">close</span>
+      </button>
+
+      <div class="wrap">
+
+        <p id="noPotionsMessage">No potions purchased</p>
+        <div class="pr" style="display: none" id="potion-twoXclicks">
+          <p>2x clicks</p>
+          <p class="cnt" id="twoXclicks-count">0</p>
+
+          <md-filled-button
+            class="eqp1"
+            onclick="activatePotion('twoXclicks')"     id="twoXclicks-button"
+            type="button"
+          >
+            Use
+          </md-filled-button>
+
+          <p id="twoXclicks-timer"></p>
+        </div>
+        <div class="pr" style="display: none" id="potion-threeXclicks">
+          <p>3x clicks</p>
+
+          <p class="cnt" id="threeXclicks-count">0</p>
+
+          <md-filled-button
+            class="eqp1"
+            id="threeXclicks-button"   onclick="activatePotion('threeXclicks')"
+            type="button"
+          >
+            Use
+          </md-filled-button>
+          <p id="threeXclicks-timer"></p>
+        </div>
+        <div class="pr" style="display: none" id="potion-twoXdiamonds">
+          <p>2x diamonds</p>
+
+          <p class="cnt" id="twoXdiamonds-count">0</p>
+
+          <md-filled-button
+            class="eqp1"
+            id="twoXdiamonds-button"   onclick="activatePotion('twoXdiamonds')"
+            type="button"
+          >
+            Use
+          </md-filled-button>
+          <p id="twoXdiamonds-timer"></p>
+        </div>
+      </div>
+    </div>
+    <div class="clicker">
+      <md-filled-button id="clicker">Click Here</md-filled-button>
+    </div>
+    <div style="display: none" id="shop">
+      <h2>Pets</h2>
+
+      <p id="diamondCounter">0</p>
+      <md-button onclick="closeElement('shop')" id="close">
+        <span class="material-icons">close</span>
+      </md-button>
+      <div id="pets" class="grid-container">
+      </div>
+
+      <md-divider></md-divider>
+
+      <h2>passes</h2>
+      <div class="passes">
+        <div class="pass">
+          <p>2-Pet Equip Pass</p>
+          <md-filled-tonal-button
+            id="2pet"
+            class="purchase"
+            onclick="buyTwoPetEquipPass()"
+          >
+            Buy (50 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+          </md-filled-tonal-button>
+        </div>
+
+        <div class="pass">
+          <p>5-Pet Equip Pass</p>
+          <md-filled-tonal-button
+            id="5pet"
+            class="purchase"
+            onclick="buyFivePetEquipPass()"
+          >
+            Buy (500 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+          </md-filled-tonal-button>
+        </div>
+        <div class="pass">
+          <p>10-Pet Equip Pass</p>
+          <md-filled-tonal-button
+            id="10pet"
+            class="purchase"
+            onclick="buyTenPetEquipPass()"
+          >
+            Buy (50k <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+          </md-filled-tonal-button>
+        </div>
+        <div class="pass">
+          <p>Auto Clicker</p>
+          <md-filled-tonal-button
+            id="autoClicker"
+            class="purchase"
+            onclick="buyAutoClicker()"
+          >
+            Buy (10k <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+          </md-filled-tonal-button>
+        </div>
+        <div class="pass">
+          <p>Super Auto Clicker</p>
+          <md-filled-tonal-button
+            id="superAutoClicker"
+            class="purchase"
+            onclick="buySuperAutoClicker()"
+          >
+            Buy (10m <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+          </md-filled-tonal-button>
+        </div>
+      </div>
+      <md-divider></md-divider>
+      <!-- Potions Section -->
+
+      <h2>Potions</h2>
+      <div id="potions-section">
+        <!--potion-1: 2X click-->
+        <div class="potion">
+          <p>2x clicks potion</p>
+          <md-filled-tonal-button
+            class="purchase"
+            id="twoXclicks"
+            onclick="buyPotion('twoXclicks')"
+          >
+            200 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> (10 min)
+          </md-filled-tonal-button>
+        </div>
+        <div class="potion">
+          <!--potion-2 3X click-->
+          <p>3x clicks potion</p>
+          <md-filled-tonal-button
+            class="purchase"
+            id="threeXclicks"
+            onclick="buyPotion('threeXclicks')"
+          >
+            300 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span>  (10 min)
+          </md-filled-tonal-button>
+        </div>
+
+        <div class="potion">
+          <!--potion-3 2X diamonds-->
+          <p>2x diamonds potion</p>
+          <md-filled-tonal-button
+            class="purchase"
+            id="twoXdiamonds"
+            onclick="buyPotion('twoXdiamonds')"
+          >
+            1000 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span>  (10 min)
+          </md-filled-tonal-button>
+        </div>
+      </div>
+    </div>
+    <div id="reward2">
+      <h2>Rewards</h2>
+      <button id="close" onclick="closeElement('reward2')">
+        <span class="material-icons">close</span>
+      </button>
+      <div class="rewardWrap">
+        <div id="rewardDisplay">Click the button to roll a reward</div>
+        <md-filled-button id="roll">Roll (1000 Clicks)</md-filled-button>
+        <md-filled-button id="premiumRoll">Roll (500 diamonds)</md-filled-button>
+      </div>
+    </div>
+    <div style="display: none;" id="equipped">
+    </div>
+    <div style="display:none;" id="about">
+      <md-button class="close" onclick="closeElement('about')">
+        <span class="material-icons">close</span>
+      </md-button>
+      <h2>About</h2>
+      <div class="my">
+        <img src="logo.webp
+          " alt="logo"> 
+      </div>
+      <md-list class="aboutMe">
+        <md-list-item>
+<div class="material-icons">
+code
+</div>
+          <b>Developed by</b>: Ronak Ameta</md-list-item>
+        <md-list-item><b>Email</b>: <a href="mailto:ronakameta65@gmail.com">ronakameta65@gmail.com</a></md-list-item>
+        <md-list-item><b>Github</b>: <a href="https://github.com/Ronak-08/Clicker-Simulator">Link</a></md-list-item>
+      </md-list>
+      <footer>
+        <small>&copy; 2024 Ronak Ameta | Clicker Simulator</small>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="click.js"></script>
+    <script src="level.js"></script>
+    <script src="pets.js"></script>
+    <script src="achievements.js"></script>
+    <script src="shop.js"></script>
+    <script src="potion.js"></script>
+  </body>
+</html>
