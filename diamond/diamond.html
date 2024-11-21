@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light" />
+    <title>Diamond World</title>
+    <link href="diamond.css" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import "@material/web/all.js";
+      import { styles as typescaleStyles } from "@material/web/typography/md-typescale-styles.js";
+
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      
+<md-filled-tonal-button class="back" onclick="window.location.href='/Clicker Simulator/index.html';">
+  Go back
+</md-filled-tonal-button>
+
+      <p id="diamondCounter">0</p>
+    </div>
+    <div class="clicker">
+      <md-filled-button id="clicker">Click Here</md-filled-button>
+    </div>
+
+    <div style="display: none;" id="equipped">
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init();
+    </script>
+    <script src="diamond.js"></script>
+  </body>
+</html>

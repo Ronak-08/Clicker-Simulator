@@ -1,0 +1,153 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --md-sys-color-primary: rgb(150 204 248);
+  --md-sys-color-surface-tint: rgb(150 204 248);
+  --md-sys-color-on-primary: rgb(0 52 79);
+  --md-sys-color-primary-container: rgb(0 75 112);
+  --md-sys-color-on-primary-container: rgb(202 230 255);
+  --md-sys-color-secondary: rgb(183 201 217);
+  --md-sys-color-on-secondary: rgb(34 50 63);
+  --md-sys-color-secondary-container: rgb(56 73 86);
+  --md-sys-color-on-secondary-container: rgb(211 229 246);
+  --md-sys-color-tertiary: rgb(208 192 232);
+  --md-sys-color-on-tertiary: rgb(54 43 74);
+  --md-sys-color-tertiary-container: rgb(77 65 98);
+  --md-sys-color-on-tertiary-container: rgb(235 220 255);
+  --md-sys-color-error: rgb(255 180 171);
+  --md-sys-color-on-error: rgb(105 0 5);
+  --md-sys-color-error-container: rgb(147 0 10);
+  --md-sys-color-on-error-container: rgb(255 218 214);
+  --md-sys-color-background: rgb(16 20 23);
+  --md-sys-color-on-background: rgb(224 227 232);
+  --md-sys-color-surface: rgb(16 20 23);
+  --md-sys-color-on-surface: rgb(224 227 232);
+  --md-sys-color-surface-variant: rgb(65 71 77);
+  --md-sys-color-on-surface-variant: rgb(193 199 206);
+  --md-sys-color-outline: rgb(139 145 152);
+  --md-sys-color-outline-variant: rgb(65 71 77);
+  --md-sys-color-shadow: rgb(0 0 0);
+  --md-sys-color-scrim: rgb(0 0 0);
+  --md-sys-color-inverse-surface: rgb(224 227 232);
+  --md-sys-color-inverse-on-surface: rgb(45 49 53);
+  --md-sys-color-inverse-primary: rgb(40 99 138);
+  --md-sys-color-primary-fixed: rgb(202 230 255);
+  --md-sys-color-on-primary-fixed: rgb(0 30 48);
+  --md-sys-color-primary-fixed-dim: rgb(150 204 248);
+  --md-sys-color-on-primary-fixed-variant: rgb(0 75 112);
+  --md-sys-color-secondary-fixed: rgb(211 229 246);
+  --md-sys-color-on-secondary-fixed: rgb(12 29 41);
+  --md-sys-color-secondary-fixed-dim: rgb(183 201 217);
+  --md-sys-color-on-secondary-fixed-variant: rgb(56 73 86);
+  --md-sys-color-tertiary-fixed: rgb(235 220 255);
+  --md-sys-color-on-tertiary-fixed: rgb(33 22 52);
+  --md-sys-color-tertiary-fixed-dim: rgb(208 192 232);
+  --md-sys-color-on-tertiary-fixed-variant: rgb(77 65 98);
+  --md-sys-color-surface-dim: rgb(16 20 23);
+  --md-sys-color-surface-bright: rgb(54 58 62);
+  --md-sys-color-surface-container-lowest: rgb(11 15 18);
+  --md-sys-color-surface-container-low: rgb(24 28 32);
+  --md-sys-color-surface-container: rgb(28 32 36);
+  --md-sys-color-surface-container-high: rgb(38 42 46);
+  --md-sys-color-surface-container-highest: rgb(49 53 57);
+}
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+#clicker {
+  border-radius: 140px;
+  height: 200px;
+  font-size: 1.5rem;
+  width: 200px;
+  padding: 16px;
+  margin: 26px 16px 16px 16px;
+}
+.clicker {
+  display: flex;
+  margin-top: 50px ;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+#diamondCounter {
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  border-radius: 25px;
+  width: fit-content;
+  padding: 12px;
+  /*height: 5vh;*/
+  font-size: 4vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 18vw;
+  margin: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  height: 38px;
+}
+.content {
+    display: flex;
+ flex-direction: row; 
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.back {
+  margin: 10px;
+  width:fit-content;
+  padding: 10px;
+}
+
+#equipped {
+  justify-content: center;
+  width: 200px;
+  max-height: 20px;
+  overflow: hidden;
+  padding: 8px;
+  border-radius: 16px;
+  background: var(--md-sys-color-primary-container);
+  flex-direction: row;
+  position: fixed;
+  bottom: 24px;
+  width: fit-content;
+  left: 40%;
+  opacity: 60%;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+}
+#equipped:hover {
+  max-height: 100px;
+  opacity: 100%;
+}
+.equipped-pet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 2px;
+  border-radius: 13px;
+  flex-direction: column;
+  font-size: 11px;
+}
+.equipped-pet img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.eqPet {
+  width: 25px;
+
+  height: 25px;
+  border-radius: 60px;
+  margin: 3px;
+}
