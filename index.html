@@ -273,113 +273,122 @@ align-items: center;
       <md-filled-button id="clicker">Click Here</md-filled-button>
     </div>
     <div style="display: none" id="shop">
-      <h2>Pets</h2>
-
-      <p id="diamondCounter">0</p>
-      <md-button onclick="closeElement('shop')" id="close">
-        <span class="material-icons">close</span>
-      </md-button>
-      <div id="pets" class="grid-container">
-      </div>
-
-      <md-divider></md-divider>
-
-      <h2>passes</h2>
-      <div class="passes">
-        <div class="pass">
-          <p>2-Pet Equip Pass</p>
-          <md-filled-tonal-button
-            id="2pet"
-            class="purchase"
-            onclick="buyTwoPetEquipPass()"
-          >
-            Buy (50 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
-          </md-filled-tonal-button>
-        </div>
-
-        <div class="pass">
-          <p>5-Pet Equip Pass</p>
-          <md-filled-tonal-button
-            id="5pet"
-            class="purchase"
-            onclick="buyFivePetEquipPass()"
-          >
-            Buy (500 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
-          </md-filled-tonal-button>
-        </div>
-        <div class="pass">
-          <p>10-Pet Equip Pass</p>
-          <md-filled-tonal-button
-            id="10pet"
-            class="purchase"
-            onclick="buyTenPetEquipPass()"
-          >
-            Buy (50k <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
-          </md-filled-tonal-button>
-        </div>
-        <div class="pass">
-          <p>Auto Clicker</p>
-          <md-filled-tonal-button
-            id="autoClicker"
-            class="purchase"
-            onclick="buyAutoClicker()"
-          >
-            Buy (10k <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
-          </md-filled-tonal-button>
-        </div>
-        <div class="pass">
-          <p>Super Auto Clicker</p>
-          <md-filled-tonal-button
-            id="superAutoClicker"
-            class="purchase"
-            onclick="buySuperAutoClicker()"
-          >
-            Buy (10m <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
-          </md-filled-tonal-button>
+        <p id="diamondCounter">0</p>
+        <md-button onclick="closeElement('shop')" id="close">
+          <span class="material-icons">close</span>
+        </md-button>
+      <div id="petSection">
+        <h2>Pets</h2>
+        <div id="pets" class="grid-container">
         </div>
       </div>
-      <md-divider></md-divider>
-      <!-- Potions Section -->
+      <div id="passSection">
+        <md-divider></md-divider>
+        <h2>passes</h2>
+        <div id="passes">
+          <div class="pass">
+            <p>2-Pet Equip Pass</p>
+            <md-filled-tonal-button
+                id="2pet"
+                class="purchase"
+                onclick="buyTwoPetEquipPass()"
+                >
+                Buy (50 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+            </md-filled-tonal-button>
+          </div>
 
-      <h2>Potions</h2>
-      <div id="potions-section">
-        <!--potion-1: 2X click-->
-        <div class="potion">
-          <p>2x clicks potion</p>
-          <md-filled-tonal-button
-            class="purchase"
-            id="twoXclicks"
-            onclick="buyPotion('twoXclicks')"
-          >
-            200 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> (10 min)
-          </md-filled-tonal-button>
+          <div class="pass">
+            <p>5-Pet Equip Pass</p>
+            <md-filled-tonal-button
+                id="5pet"
+                class="purchase"
+                onclick="buyFivePetEquipPass()"
+                >
+                Buy (500 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+            </md-filled-tonal-button>
+          </div>
+          <div class="pass">
+            <p>10-Pet Equip Pass</p>
+            <md-filled-tonal-button
+                id="10pet"
+                class="purchase"
+                onclick="buyTenPetEquipPass()"
+                >
+                Buy (50k <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+            </md-filled-tonal-button>
+          </div>
+          <div class="pass">
+            <p>Auto Clicker</p>
+            <md-filled-tonal-button
+                id="autoClicker"
+                class="purchase"
+                onclick="buyAutoClicker()"
+                >
+                Buy (10k <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+            </md-filled-tonal-button>
+          </div>
+          <div class="pass">
+            <p>Super Auto Clicker</p>
+            <md-filled-tonal-button
+                id="superAutoClicker"
+                class="purchase"
+                onclick="buySuperAutoClicker()"
+                >
+                Buy (10m <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> )
+            </md-filled-tonal-button>
+          </div>
         </div>
-        <div class="potion">
-          <!--potion-2 3X click-->
-          <p>3x clicks potion</p>
-          <md-filled-tonal-button
-            class="purchase"
-            id="threeXclicks"
-            onclick="buyPotion('threeXclicks')"
-          >
-            300 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span>  (10 min)
-          </md-filled-tonal-button>
-        </div>
+      </div>
 
-        <div class="potion">
-          <!--potion-3 2X diamonds-->
-          <p>2x diamonds potion</p>
-          <md-filled-tonal-button
-            class="purchase"
-            id="twoXdiamonds"
-            onclick="buyPotion('twoXdiamonds')"
-          >
-            1000 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span>  (10 min)
-          </md-filled-tonal-button>
+      <div  id="potionSection">
+        <md-divider></md-divider>
+        <!-- Potions Section -->
+
+        <h2>Potions</h2>
+        <div id="potions-section">
+          <!--potion-1: 2X click-->
+          <div class="potion">
+            <p>2x clicks potion</p>
+            <md-filled-tonal-button
+                class="purchase"
+                id="twoXclicks"
+                onclick="buyPotion('twoXclicks')"
+                >
+                200 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span> (10 min)
+            </md-filled-tonal-button>
+          </div>
+          <div class="potion">
+            <!--potion-2 3X click-->
+            <p>3x clicks potion</p>
+            <md-filled-tonal-button
+                class="purchase"
+                id="threeXclicks"
+                onclick="buyPotion('threeXclicks')"
+                >
+                300 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span>  (10 min)
+            </md-filled-tonal-button>
+          </div>
+
+          <div class="potion">
+            <!--potion-3 2X diamonds-->
+            <p>2x diamonds potion</p>
+            <md-filled-tonal-button
+                class="purchase"
+                id="twoXdiamonds"
+                onclick="buyPotion('twoXdiamonds')"
+                >
+                1000 <span style="font-size: 15px; vertical-align: middle;" class="material-icons">diamond</span>  (10 min)
+            </md-filled-tonal-button>
+          </div>
         </div>
+      </div>
+      <div id="bottomBar">
+        <div id="petTab" onclick="showSection('pet')"><span style="font-size: 19px; padding: 3px;" class="material-icons">pets</span>Pet</div>
+        <div id="passTab" onclick="showSection('pass')"><span style="font-size: 19px; padding: 3px;" class="material-icons">book</span>Pass</div>
+        <div id="potionTab" onclick="showSection('potion')"><span style="font-size: 19px; padding: 3px;" class="material-icons">science</span>Potion</div>
       </div>
     </div>
-    <div id="reward2">
+      <div id="reward2">
       <h2>Rewards</h2>
       <button id="close" onclick="closeElement('reward2')">
         <span class="material-icons">close</span>

@@ -488,3 +488,24 @@ PrewardButton.addEventListener("click", () => {
 document.getElementById("themeSwitch").addEventListener("click", function () {
   document.body.classList.toggle("light");
 });
+
+const layout = ()=> {
+  document.getElementById('bottomBar').style.display = 'flex'
+
+}
+function showSection(section) {
+  // Hide all sections
+  document.getElementById('petSection').style.display = 'none';
+  document.getElementById('passSection').style.display = 'none';
+  document.getElementById('potionSection').style.display = 'none';
+
+document.querySelectorAll('#bottomBar div').forEach(tab => tab.classList.remove('active'));
+
+  // Add active class to the selected tab
+  document.getElementById(`${section}Tab`).classList.add('active');
+  // Show the selected section
+  document.getElementById(`${section}Section`).style.display = 'flex';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  showSection('pet');
+});
